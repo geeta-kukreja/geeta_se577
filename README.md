@@ -1,12 +1,6 @@
 # Quasar App (quasar-project)
 
-## Post Setup Activities
-
-1. Add Page1, Page2, Page 3 to /src/pages
-2. Update router in /router/routes.ts to add these pages
-3. Examine the changes in MainLayout.vue
-
-A Quasar Project
+A Quasar Project - Week 3 deliverable
 
 ## Install the dependencies
 
@@ -21,7 +15,9 @@ npm install
 ```bash
 quasar dev
 ```
+
 or yarn quasar dev
+
 ### Lint the files
 
 ```bash
