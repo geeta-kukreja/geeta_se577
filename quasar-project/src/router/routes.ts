@@ -7,23 +7,23 @@ const routes: RouteRecordRaw[] = [
     children: [{ path: '', component: () => import('pages/HomePage.vue') }],
   },
   {
-    path: '/p1',
+    path: '/infoaboutme',
     component: () => import('layouts/MainLayout.vue'),
     children: [
-      { path: '', component: () => import('src/pages/FirstPage.vue') },
+      { path: '', component: () => import('src/pages/MyInfoPage.vue') },
     ],
   },
   {
-    path: '/p2',
+    path: '/allrepos',
     component: () => import('layouts/MainLayout.vue'),
     children: [
-      { path: '', component: () => import('src/pages/SecondPage.vue') },
+      { path: '', component: () => import('src/pages/AllRepoPage.vue') },
     ],
   },
   {
-    path: '/p3',
+    path: '/findrepo',
     component: () => import('layouts/MainLayout.vue'),
-    children: [{ path: '', component: () => import('pages/ThirdPage.vue') }],
+    children: [{ path: '', component: () => import('pages/FindPage.vue') }],
   },
 
   // Always leave this as last one,

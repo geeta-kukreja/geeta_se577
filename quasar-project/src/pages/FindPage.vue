@@ -59,7 +59,7 @@
 
 <script lang="ts">
 export default {
-  name: 'ThirdPage',
+  name: 'FindPage',
 };
 </script>
 
@@ -87,6 +87,7 @@ const queryChanged = (e: Event) => {
 //When the radio button state changes we mark as dirty so we can manage the UI
 //The main purpose of this is to show you watch functionality in that we can
 //watch for state changes in vue
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const radioButtonChanged = watch(queryOption, () => {
   queryIsDirty.value = true;
   repoData.value = [];
@@ -94,6 +95,7 @@ const radioButtonChanged = watch(queryOption, () => {
 
 //Not really using this but wanted to demo you can get the old and updated values
 //as well in case that mattered to you
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const radioButtonChanged_NotUsed = watch(
   queryOption,
   (old: string, updated: string) => {

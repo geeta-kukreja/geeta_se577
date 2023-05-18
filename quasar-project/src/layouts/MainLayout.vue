@@ -100,12 +100,13 @@ const leftDrawerOpen = ref(false);
 const model = ref('');
 
 const options = [
-  { label: 'Info about me', value: 'one', to: '/p1' },
-  { label: 'List of all repos', value: 'two', to: '/p2' },
-  { label: 'Find Repo', value: 'three', to: '/p3' },
+  { label: 'Info about me', value: 'one', to: '/infoaboutme' },
+  { label: 'List of all repos', value: 'two', to: '/allrepos' },
+  { label: 'Find Repo', value: 'three', to: '/findrepo' },
   // { label: 'Repo details', value: 'four', to: '/p4' },
 ];
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 function toggleLeftDrawer() {
   leftDrawerOpen.value = !leftDrawerOpen.value;
 }

@@ -35,7 +35,7 @@
 
 <script lang="ts">
 export default {
-  name: 'SecondPage',
+  name: 'AllRepoPage',
 };
 </script>
 
