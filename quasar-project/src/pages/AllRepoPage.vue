@@ -48,13 +48,14 @@ import axios from 'axios';
 let repoData = ref<RepoApiInterface[]>([]);
 
 onMounted(async () => {
-  let allReposURI = 'http://localhost:9500/ghsecure/user/geeta-kukreja/repos';
+  let allReposURI = 'http://localhost:9500/myData';
   console.log('he');
-  console.log(repoData.value);
+  
   let repoAPI = await axios.get<RepoApiInterface[]>(allReposURI);
     console.log(repoAPI.status);
   if (repoAPI.status == 200) {
     repoData.value = repoAPI.data;
+    console.log(repoData.value);
     console.log(repoData);
   }
 });

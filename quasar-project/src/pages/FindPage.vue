@@ -34,20 +34,17 @@
     <ul>
       <li class="list-item" v-for="item in repoData" :key="item.id">
         <div class="list-item-right">
-          <h4 class="list-item-title">{{ item.id }} {{ item.repo }}</h4>
+          <h4 class="list-item-title">{{ item.id }} {{ item.name }}</h4>
           <p class="list-item-description">
             {{ item.description }}
           </p>
           <a
-            :href="item.url"
+            :href="item.html_url"
             class="list-item-description"
             style="color: dodgerblue"
-            >{{ item.url }}
+            >{{ item.html_url }}
           </a>
-          <p class="list-item-description">
-            Last Updated:
-            {{ item.last_update }}
-          </p>
+         
         </div>
       </li>
     </ul>

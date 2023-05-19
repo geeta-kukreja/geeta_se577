@@ -24,12 +24,20 @@ server.register(cors, {
     origin: "*"
 })
 
-server.get('/ghsecure/user/geeta-kukreja/repos', async (request, reply) => {
-  // const response = await got('/ghsecure/user/geeta-kukreja/repos')
-  console.log(reply)
-  return reply.headers.toString();
-}
-)
+server.get('/myData', async (request, reply) => {
+  try {
+    const response = await server.inject({
+      method: 'GET',
+      url: '/ghsecure/users/geeta-kukreja/repos'
+    });
+    repos = reply.send(response.payload);
+    console.log(repos);
+    return repos;
+  } catch (error) {
+    console.error(error);
+    reply.code(500).send('Internal Server Error');
+  }
+});
 
 // interface requestId extends RequestGenericInterface {
 //     Params: {
@@ -59,8 +67,14 @@ interface requestQry extends RequestGenericInterface {
 }
 
 server.get<requestQry>('/search', async (request, reply) => {
-    const { id,name } = request.query;
     
+    const response = await server.inject({
+      method: 'GET',
+      url: '/ghsecure/users/geeta-kukreja/repos'
+    });
+    repos = JSON.parse(response.payload);
+    // repos = JSON.parse(repos)
+    const { id,name } = request.query;
     if (id){
         const repo = repos.find((element: { id: number; }) => element.id == id);
         if (repo) {
