@@ -1,35 +1,53 @@
-import  {repos}  from "./db";
-import fastify, {RequestGenericInterface} from "fastify";
+// import  {repos}  from "./db";
+import fastify, {FastifyContext, HTTPMethods, RequestGenericInterface} from "fastify";
+import fastifyHttpProxy from "@fastify/http-proxy";
+import dotenv from 'dotenv';
+
+import {GetGHProxySecureOptions, GetGHProxyOptions } from "./proxy";
+
 import cors from '@fastify/cors';
+import { json } from "stream/consumers";
+// const got = require('got')
 
-
+dotenv.config();
 const server = fastify()
+
+let repos: any =[];
+
+let proxyOptsSecure = GetGHProxySecureOptions(process.env.GH_ACCESS_TOKEN)
+server.register(fastifyHttpProxy, proxyOptsSecure)
+
+let proxyOpts = GetGHProxyOptions()
+server.register(fastifyHttpProxy, proxyOpts)
 
 server.register(cors, {
     origin: "*"
 })
 
-server.get('/repositories', async (request, reply) => {
-  return repos;
-})
-
-interface requestId extends RequestGenericInterface {
-    Params: {
-      id: number
-    }
+server.get('/ghsecure/user/geeta-kukreja/repos', async (request, reply) => {
+  // const response = await got('/ghsecure/user/geeta-kukreja/repos')
+  console.log(reply)
+  return reply.headers.toString();
 }
+)
 
-server.get<requestId>('/repositories/:id', async (request, reply) => {
-    const { id } = request.params;
-    const repo = repos.find(element => element.id == id);
-    if (repo) {
-        return repo;
-    } else {
-        let errObj = {error: `Repository = ${id} was not found`};
-        reply.code(404).send(errObj);
-        return
-    }
-  })
+// interface requestId extends RequestGenericInterface {
+//     Params: {
+//       id: number
+//     }
+// }
+
+// server.get<requestId>('/repositories/:id', async (request, reply) => {
+//     const { id } = request.params;
+//     const repo = repos.find(element => element.id == id);
+//     if (repo) {
+//         return repo;
+//     } else {
+//         let errObj = {error: `Repository = ${id} was not found`};
+//         reply.code(404).send(errObj);
+//         return
+//     }
+//   })
 
 
 
@@ -44,7 +62,7 @@ server.get<requestQry>('/search', async (request, reply) => {
     const { id,name } = request.query;
     
     if (id){
-        const repo = repos.find(element => element.id == id);
+        const repo = repos.find((element: { id: number; }) => element.id == id);
         if (repo) {
             return [repo];
         } else {
@@ -53,7 +71,7 @@ server.get<requestQry>('/search', async (request, reply) => {
             return
         }
     }else if (name){
-        const repo  = repos.find(element => element.repo == name);
+        const repo  = repos.find((element: { name: string; }) => element.name == name);
         if (repo) {
           return [repo];
       } else {

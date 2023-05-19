@@ -1,9 +1,9 @@
 export interface RepoApiInterface {
-  id: number;
-  repo: string;
-  url: string;
-  last_update: string;
-  description: string;
+  'id': number;
+  'name': string;
+  'html_url': string;
+  // last_update: string;
+  'description': unknown;
   // courseId: string
 }
 

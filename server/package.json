@@ -3,14 +3,15 @@
   "version": "1.0.0",
   "description": "simple server",
   "main": "server.ts",
-  "author": "brian mitchell",
+  "author": "geeta kukreja",
   "license": "MIT",
   "scripts": {
     "server": "nodemon  server.ts"
   },
   "dependencies": {
     "@fastify/cors": "^8.2.1",
-    "axios": "^1.4.0",
+    "@fastify/http-proxy": "^9.1.0",
+    "dotenv": "^16.0.3",
     "fastify": "^4.17.0",
     "nodemon": "^2.0.22",
     "ts-node": "^10.9.1"
