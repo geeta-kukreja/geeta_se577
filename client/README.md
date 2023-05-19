@@ -2,11 +2,7 @@
 
 ## Post Setup Activities
 
-1. Add Page1, Page2, Page 3 to /src/pages
-2. Update router in /router/routes.ts to add these pages
-3. Examine the changes in MainLayout.vue
-
-A Quasar Project - Week 5 Deliverable
+A Quasar Project - Week 6 Deliverable
 
 note: for testing 'Find repo', please use details from 'List of all repos' Page
 
@@ -21,7 +17,7 @@ npm install
 ### Start the app in development mode (hot-code reloading, error reporting, etc.)
 
 ```bash
-quasar dev
+yarn quasar dev
 ```
 
 ### Lint the files

@@ -30,7 +30,7 @@
     </button>
   </p>
   <div class="list" v-if="repoData.length > 0 && !queryIsDirty">
-    <h3 class="name-list-title">List of all my repos</h3>
+    <h3 class="name-list-title">My repo</h3>
     <ul>
       <li class="list-item" v-for="item in repoData" :key="item.id">
         <div class="list-item-right">

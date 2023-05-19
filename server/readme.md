@@ -8,7 +8,7 @@ After you get the code run `yarn` or `npm install` to pull all of the dependenci
 
 Then to run execute `yarn run server` or `npm run server`
 
-You can then go to `localhost:9095` and do the following things:
+You can then go to `localhost:9500` and do the following things:
 
 1. http://localhost:9500/search?name=cryptotracker
 2. http://localhost:9500/search?id=1
