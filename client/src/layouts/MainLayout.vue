@@ -101,8 +101,9 @@ const model = ref('');
 
 const options = [
   { label: 'Info about me', value: 'one', to: '/infoaboutme' },
-  { label: 'List of all repos', value: 'two', to: '/allrepos' },
+  { label: 'List all Repos', value: 'two', to: '/allrepos' },
   { label: 'Find Repo', value: 'three', to: '/findrepo' },
+  { label: 'List All Gists', value: 'three', to: '/allgists' },
   // { label: 'Repo details', value: 'four', to: '/p4' },
 ];
 

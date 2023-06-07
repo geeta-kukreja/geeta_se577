@@ -4,11 +4,17 @@ export interface RepoApiInterface {
   'html_url': string;
   'updated_at': string;
   'description': unknown;
+  // 'stargazers': string[]
   // courseId: string
 }
 
-export interface CommitsApiInterface {
-  'message': string;
+export interface GistApiInterface {
+  'id': number;
+  'html_url': string;
+  'files':  string, 
+  'type': string,
+  'updated_at': string;
+  'description': unknown;
   // courseId: string
 }
 
