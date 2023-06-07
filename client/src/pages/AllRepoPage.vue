@@ -44,10 +44,10 @@ export default {
 </script>
 
 <script setup lang="ts">
-import { onMounted, ref, computed, watch } from 'vue';
-import type { RepoApiInterface, ApiErrorInterface } from './ApiInterfaces';
-import axios, { AxiosError } from 'axios';
-import { QSlideItem } from 'quasar';
+import { onMounted, ref} from 'vue';
+import type { RepoApiInterface } from './ApiInterfaces';
+import axios from 'axios';
+
 
 //Most code goes here
 let repoData = ref<RepoApiInterface[]>([]);

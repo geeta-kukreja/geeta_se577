@@ -4,7 +4,9 @@
 
 A Quasar Project - Final Deliverable
 
-note: for testing 'Find repo', please use details from 'List of all repos' Page
+note: 
+* 'list of all repos' takes few seconds to load
+* for testing 'Find repo', please use details from 'List of all repos' Page
 
 ## Install the dependencies
 

@@ -40,10 +40,10 @@ export default {
 
 <script setup lang="ts">
 //Most code goes here
-import { onMounted, ref, computed, watch } from 'vue';
-import type { FavouritesApiInterface, ApiErrorInterface } from './ApiInterfaces';
-import axios, { AxiosError } from 'axios';
-import { QSlideItem } from 'quasar';
+import { onMounted, ref} from 'vue';
+import type { FavouritesApiInterface} from './ApiInterfaces';
+import axios from 'axios';
+
 
 //Most code goes here
 let repoData = ref<FavouritesApiInterface[]>([]);

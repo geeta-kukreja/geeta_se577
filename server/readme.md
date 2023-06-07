@@ -13,6 +13,8 @@ You can then go to `localhost:9500` and do the following things:
 1. http://localhost:9500/search?name=cryptotracker
 2. http://localhost:9500/search?id=1
 3. http://localhost:9500/ghsecure/users/geeta-kukreja/repo
+4. http://localhost:9500/myData
+5. http://localhost:9500/myGists
 
 
 

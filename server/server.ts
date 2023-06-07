@@ -31,6 +31,8 @@ server.register(cors, {
 });
 
 server.get("/myData", async (request, reply) => {
+  favgists = [];
+
   try {
     const response = await server.inject({
       method: "GET",
@@ -117,6 +119,7 @@ async function getLastcommit(repoName: string) {
 // }
 
 server.get<requestQry>("/search", async (request, reply) => {
+
   const response = await server.inject({
     method: "GET",
     url: "/ghsecure/users/geeta-kukreja/repos",
