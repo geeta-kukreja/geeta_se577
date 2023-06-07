@@ -15,8 +15,16 @@ export interface GistApiInterface {
   'type': string,
   'updated_at': string;
   'description': unknown;
+  'buttonText': boolean;
   // courseId: string
 }
+
+export interface FavouritesApiInterface {
+  'name':  string, 
+  'url': string;
+  // courseId: string
+}
+
 
 
 export interface ApiErrorInterface {

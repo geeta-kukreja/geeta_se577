@@ -33,6 +33,11 @@ const routes: RouteRecordRaw[] = [
     children: [{ path: '', component: () => import('pages/FindPage.vue') }],
   },
 
+  {
+    path: '/myfav',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [{ path: '', component: () => import('pages/MyFavourites.vue') }],
+  },
   // Always leave this as last one,
   // but you can also remove it
   {

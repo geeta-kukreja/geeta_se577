@@ -103,7 +103,8 @@ const options = [
   { label: 'Info about me', value: 'one', to: '/infoaboutme' },
   { label: 'List all Repos', value: 'two', to: '/allrepos' },
   { label: 'Find Repo', value: 'three', to: '/findrepo' },
-  { label: 'List All Gists', value: 'three', to: '/allgists' },
+  { label: 'List All Gists', value: 'four', to: '/allgists' },
+  { label: 'My Favourites', value: 'five', to: '/myFav' },
   // { label: 'Repo details', value: 'four', to: '/p4' },
 ];
 

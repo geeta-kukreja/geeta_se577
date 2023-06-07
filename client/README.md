@@ -2,7 +2,7 @@
 
 ## Post Setup Activities
 
-A Quasar Project - Week 6 Deliverable
+A Quasar Project - Final Deliverable
 
 note: for testing 'Find repo', please use details from 'List of all repos' Page
 
