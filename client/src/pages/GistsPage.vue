@@ -22,7 +22,7 @@
       Show All commits
     </button> -->
         <button type="button" @click="postCall(item.files,item.html_url, item)">
-          {{ item.buttonText ?  'Item added to favoriate': 'Add to favoriate'  }}
+          {{ item.buttonText ?  'Gist added to favourite': 'Add to favourite'  }}
         </button>
         </div>
       </li>
@@ -60,7 +60,7 @@ export default {
         };
         if(!itemButton.buttonText){
           axios.post('http://localhost:9500/favgists', data)
-          .then(response => {
+          .then(() => {
             itemButton.buttonText  = ! itemButton.buttonText ;
             console.log(!itemButton);
           })
