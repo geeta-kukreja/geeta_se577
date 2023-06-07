@@ -2,7 +2,7 @@
 ![alt_text](https://github.com/geeta-kukreja/geeta_se577/blob/bfacb8837415e7236eecf9dd55b97c6c87b6294f/architecture%20images/Context.jpg?raw=true)
 ![alt_text](https://github.com/geeta-kukreja/geeta_se577/blob/c41f81793caf5037a225600bec3ec5dfc1642a9e/architecture%20images/Container.jpg?raw=true)
 
-
+![alt_text](https://github.com/geeta-kukreja/geeta_se577/blob/ce961419ff2fbe5edda148242ecdc2cf82f20780/architecture%20images/Component.jpg?raw=true)
 Frontend Architecture:
 The frontend of the application will be developed using Vue.js, a popular JavaScript framework for building user interfaces. Vue.js provides a reactive and component-based architecture, allowing for efficient development and easy maintenance of the application. The frontend will consist of multiple components responsible for rendering different views and handling user interactions.
 
