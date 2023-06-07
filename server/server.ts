@@ -30,8 +30,20 @@ server.get('/myData', async (request, reply) => {
       method: 'GET',
       url: '/ghsecure/users/geeta-kukreja/repos'
     });
-    repos = reply.send(response.payload);
-    console.log(repos);
+    repos = JSON.parse(response.payload);
+    // repos = reply.send(response.payload);
+    // console.log('Hiii');
+    let list: string[] = [];
+
+    repos.forEach((element: { name: string; updated_at: string; stargazers:string[] }) => {
+       var commits = Callcommit(element);
+       element.updated_at = commits + element.updated_at
+    });
+
+    // const response1 = await server.inject({
+    //   method: 'GET',
+    //   url: '/ghsecure/geeta-kukreja/repos/'+repoName.name+'/stargazers'
+    // });
     return repos;
   } catch (error) {
     console.error(error);
@@ -66,8 +78,17 @@ interface requestQry extends RequestGenericInterface {
     }
 }
 
+const Callcommit = async (repoName: { name: any; updated_at?: string; stargazers?: string[]; }) => {
+  const response = await server.inject({
+    method: 'GET',
+    url: '/ghsecure/geeta-kukreja/repos/'+repoName.name+'/commits'
+  });
+  // console.log(response.statusCode)
+  // let commits = JSON.parse(response.payload);
+  return response
+}
+
 server.get<requestQry>('/search', async (request, reply) => {
-    
     const response = await server.inject({
       method: 'GET',
       url: '/ghsecure/users/geeta-kukreja/repos'
@@ -95,6 +116,30 @@ server.get<requestQry>('/search', async (request, reply) => {
         }
     }else {
         let errObj = {error: "The /search API requires an id or Repo name query parameter"};
+        reply.code(400).send(errObj);
+        return
+    }
+  })
+
+  server.get<requestQry>('/commits', async (request, reply) => { 
+    const response = await server.inject({
+      method: 'GET',
+      url: '/ghsecure/users/geeta-kukreja/repos'
+    });
+    repos = JSON.parse(response.payload);
+    // repos = JSON.parse(repos)
+    const name = request.query;
+    if (name){
+        const repo  = repos.find((element: { name: string; }) => name == name);
+        if (repo) {
+          return [repo];
+      } else {
+            let errObj = {error: `Commits with name = ${name} was not found`};
+            reply.code(404).send(errObj);
+            return
+        }
+    }else {
+        let errObj = {error: "The /search API requires Repo name query parameter"};
         reply.code(400).send(errObj);
         return
     }

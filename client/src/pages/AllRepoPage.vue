@@ -25,8 +25,12 @@
           </a>
           <p class="list-item-description">
             Last Updated:
-            <!-- {{ item.last_update }} -->
+            {{ item.updated_at }}
           </p>
+          <button type="button" @click="fetchRepoCommitInfo(item.name)">
+      Show All commits
+    </button>
+    
         </div>
       </li>
     </ul>
@@ -40,9 +44,10 @@ export default {
 </script>
 
 <script setup lang="ts">
-import { onMounted, ref } from 'vue';
-import type { RepoApiInterface } from './ApiInterfaces';
-import axios from 'axios';
+import { onMounted, ref, computed, watch } from 'vue';
+import type { RepoApiInterface, ApiErrorInterface } from './ApiInterfaces';
+import axios, { AxiosError } from 'axios';
+import { QSlideItem } from 'quasar';
 
 //Most code goes here
 let repoData = ref<RepoApiInterface[]>([]);
@@ -59,6 +64,79 @@ onMounted(async () => {
     console.log(repoData);
   }
 });
+
+const queryOption = ref('repoId');
+const queryValue = ref('');
+const queryIsDirty = ref(false);
+const apiErrorInfo = ref<ApiErrorInterface>({
+  isError: false,
+  errorCode: 0,
+  errorMessage: '',
+});
+
+
+const queryChanged = (e: Event) => {
+  queryIsDirty.value = true;
+  repoData.value = [];
+};
+
+//When the radio button state changes we mark as dirty so we can manage the UI
+//The main purpose of this is to show you watch functionality in that we can
+//watch for state changes in vue
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const radioButtonChanged = watch(queryOption, () => {
+  queryIsDirty.value = true;
+  repoData.value = [];
+});
+
+//Not really using this but wanted to demo you can get the old and updated values
+//as well in case that mattered to you
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const radioButtonChanged_NotUsed = watch(
+  queryOption,
+  (old: string, updated: string) => {
+    console.log(`RADIO BUTTON CHANGED ${old} ${updated}`);
+  }
+);
+
+let queryByNamePrefix = 'http://localhost:9500/commits?name=';
+
+const fetchRepoCommitInfo = async (repoName: string) => {
+  // queryIsDirty.value = false;
+  // console.log(queryOption.value);
+  // const apiPrefix =
+  //   queryOption.value == 'repoId' ? queryByIdPrefix : queryByNamePrefix;
+  // let num: number = parseInt(queryValue.value);
+  const apiURL = queryByNamePrefix + repoName;
+  console.log(apiURL);
+  try {
+    let repoAPI = await axios.get<RepoApiInterface[]>(apiURL);
+
+    if (repoAPI.status == 200) {
+      console.log(repoAPI);
+      apiErrorInfo.value.isError = false;
+      apiErrorInfo.value.errorCode = repoAPI.status;
+      apiErrorInfo.value.errorMessage = repoAPI.statusText;
+      repoData.value = repoAPI.data;
+      console.log('succrss');
+     
+    } else {
+      console.log('bad repo value');
+    }
+  } catch (err) {
+    let e = err as AxiosError; //convert to axios error type
+    if (e.response) {
+      apiErrorInfo.value.isError = true;
+      apiErrorInfo.value.errorCode = e.response.status;
+      apiErrorInfo.value.errorMessage = e.request.statusText;
+      console.log('Got Error Code ', e.response.status);
+    } else {
+      // Anything else
+    }
+  }
+};
+
+
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
