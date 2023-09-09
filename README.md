@@ -1,2 +1,3 @@
 # geeta_se577
-The SE577 Software Architecture Course Project Repository serves as a centralized and collaborative platform for my project deliverable in the SE577 Software Architecture course. The repository is designed to support the development and management of individual projects throughout the course
+
+Seamlessly integrated Vue.js, Fastify, and the GitHub API to build a dynamic single-page application for GitHub repositories and gists, utilizing GitHub access tokens for secure authentication, implementing features such as fetching and displaying repository details, gists, and a favorites functionality for personalized gist management.
